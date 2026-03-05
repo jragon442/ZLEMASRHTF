@@ -18,10 +18,10 @@ namespace NinjaTrader.NinjaScript.Indicators
 	// Enums (match TV options)
 	// ---------------------------
 	public enum SRInvalidationMode { Wick, Close }
-	[Obsolete("Use SRInvalidationMode instead")]
+	[Obsolete("Use SRInvalidationMode instead. This alias will be removed in a future version.", false)]
 	public enum SRInvalidationModel { Wick = (int)SRInvalidationMode.Wick, Close = (int)SRInvalidationMode.Close } // legacy alias for scripts using the typo name
 	public enum ExpandLinesMode { None, OnlyValid, All }
-	[Obsolete("Use ExpandLinesMode instead")]
+	[Obsolete("Use ExpandLinesMode instead. This alias will be removed in a future version.", false)]
 	public enum ExpandLinesModel { None = (int)ExpandLinesMode.None, OnlyValid = (int)ExpandLinesMode.OnlyValid, All = (int)ExpandLinesMode.All } // legacy alias for scripts using the typo name
 	public enum SRStyleMode { Lines, Zones }
 	public enum SRLineStyleMode { Solid, Dash, Dot }
