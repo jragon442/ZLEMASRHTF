@@ -14,17 +14,19 @@ using NinjaTrader.NinjaScript.DrawingTools;
 
 namespace NinjaTrader.NinjaScript.Indicators
 {
+	// ---------------------------
+	// Enums (match TV options)
+	// ---------------------------
+	public enum SRInvalidationMode { Wick, Close }
+	public enum SRInvalidationModel { Wick = SRInvalidationMode.Wick, Close = SRInvalidationMode.Close } // compatibility alias
+	public enum ExpandLinesMode { None, OnlyValid, All }
+	public enum ExpandLinesModel { None = ExpandLinesMode.None, OnlyValid = ExpandLinesMode.OnlyValid, All = ExpandLinesMode.All } // compatibility alias
+	public enum SRStyleMode { Lines, Zones }
+	public enum SRLineStyleMode { Solid, Dash, Dot }
+	public enum TimeframeUnit { Minute, Hour, Day, Week }
+
 	public class ZLEMASRHTF : Indicator
 	{
-		// ---------------------------
-		// Enums (match TV options)
-		// ---------------------------
-		public enum SRInvalidationMode { Wick, Close }
-		public enum ExpandLinesMode { None, OnlyValid, All }
-		public enum SRStyleMode { Lines, Zones }
-		public enum SRLineStyleMode { Solid, Dash, Dot }
-		public enum TimeframeUnit { Minute, Hour, Day, Week }
-
 		private enum SRType { Support, Resistance }
 
 		private const int    ATR_LEN                = 20;
@@ -845,7 +847,7 @@ namespace NinjaTrader.NinjaScript.Indicators
 		{
 			if (Instrument == null || Instrument.MasterInstrument == null)
 				return price;
-			return Instrument.MasterInstrument.Round2TickSize(price);
+			return Instrument.MasterInstrument.RoundToTickSize(price);
 		}
 
 		private string FormatPrice(double price)
