@@ -18,9 +18,9 @@ namespace NinjaTrader.NinjaScript.Indicators
 	// Enums (match TV options)
 	// ---------------------------
 	public enum SRInvalidationMode { Wick, Close }
-	public enum SRInvalidationModel { Wick = SRInvalidationMode.Wick, Close = SRInvalidationMode.Close } // compatibility alias
+	public enum SRInvalidationModel { Wick = SRInvalidationMode.Wick, Close = SRInvalidationMode.Close } // legacy alias for scripts using the typo'd name
 	public enum ExpandLinesMode { None, OnlyValid, All }
-	public enum ExpandLinesModel { None = ExpandLinesMode.None, OnlyValid = ExpandLinesMode.OnlyValid, All = ExpandLinesMode.All } // compatibility alias
+	public enum ExpandLinesModel { None = ExpandLinesMode.None, OnlyValid = ExpandLinesMode.OnlyValid, All = ExpandLinesMode.All } // legacy alias for scripts using the typo'd name
 	public enum SRStyleMode { Lines, Zones }
 	public enum SRLineStyleMode { Solid, Dash, Dot }
 	public enum TimeframeUnit { Minute, Hour, Day, Week }
