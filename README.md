@@ -14,17 +14,21 @@ using NinjaTrader.NinjaScript.DrawingTools;
 
 namespace NinjaTrader.NinjaScript.Indicators
 {
+	// ---------------------------
+	// Enums (match TV options)
+	// ---------------------------
+	public enum SRInvalidationMode { Wick, Close }
+	[Obsolete("Use SRInvalidationMode instead. This alias will be removed in a future version.", false)]
+	public enum SRInvalidationModel { Wick = (int)SRInvalidationMode.Wick, Close = (int)SRInvalidationMode.Close } // legacy alias for scripts using the typo name
+	public enum ExpandLinesMode { None, OnlyValid, All }
+	[Obsolete("Use ExpandLinesMode instead. This alias will be removed in a future version.", false)]
+	public enum ExpandLinesModel { None = (int)ExpandLinesMode.None, OnlyValid = (int)ExpandLinesMode.OnlyValid, All = (int)ExpandLinesMode.All } // legacy alias for scripts using the typo name
+	public enum SRStyleMode { Lines, Zones }
+	public enum SRLineStyleMode { Solid, Dash, Dot }
+	public enum TimeframeUnit { Minute, Hour, Day, Week }
+
 	public class ZLEMASRHTF : Indicator
 	{
-		// ---------------------------
-		// Enums (match TV options)
-		// ---------------------------
-		public enum SRInvalidationMode { Wick, Close }
-		public enum ExpandLinesMode { None, OnlyValid, All }
-		public enum SRStyleMode { Lines, Zones }
-		public enum SRLineStyleMode { Solid, Dash, Dot }
-		public enum TimeframeUnit { Minute, Hour, Day, Week }
-
 		private enum SRType { Support, Resistance }
 
 		private const int    ATR_LEN                = 20;
@@ -845,7 +849,7 @@ namespace NinjaTrader.NinjaScript.Indicators
 		{
 			if (Instrument == null || Instrument.MasterInstrument == null)
 				return price;
-			return Instrument.MasterInstrument.Round2TickSize(price);
+			return Instrument.MasterInstrument.RoundToTickSize(price);
 		}
 
 		private string FormatPrice(double price)
